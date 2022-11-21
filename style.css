@@ -4,3 +4,6 @@
 .list{
     color:green;
 }
+.error{
+    border-color: red;
+}
