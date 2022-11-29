@@ -1,38 +1,45 @@
 const button = document.getElementById("button");
 const input = document.getElementById("input");
 const ul = document.getElementById("ul");
-const space = /\s*/;
+const list = document.getElementById("list");
+const error = document.createTextNode('fill in the field');
 let amount = 1;
-function launcher() {
-    input.value = input.value.replace(space, '');
+input.onfocus = function () {
+    input.classList.remove("error-input")
+    error.remove();
+}
+function addTask() {
+    input.value = input.value.trim();
     if (input.value) {
-        input.classList.remove("error");
+
         const li = document.createElement('li');
         li.innerText = input.value;
         input.value = "";
         ul.append(li);
         amount++;
         if (amount % 2) {
-            ul.classList.remove("block");
-            ul.classList.add("list");
+            ul.classList.remove("text-red");
+            ul.classList.add("text-green");
         } else {
-            ul.classList.remove("list");
-            ul.classList.add("block");
+            ul.classList.remove("text-green");
+            ul.classList.add("text-red");
         }
     } else {
-        input.classList.add("error");
-        alert("fill in the field");
+        list.before(error);
+        input.classList.add("error-input")
     }
 }
 button.addEventListener("click", function () {
-    launcher();
-    input.focus();
+    addTask();
 });
 input.addEventListener('keydown', function (event) {
     if (event.code === 'Enter') {
-        launcher();
+        addTask();
     }
 });
+
+
+
 
 
 

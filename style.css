@@ -1,9 +1,13 @@
-.block {
+.text-red {
     color: red;
 }
-.list{
+.text-green{
     color:green;
 }
-.error{
+
+.error-input{
     border-color: red;
+}
+.error{
+    color: red;
 }
