@@ -1,17 +1,15 @@
 const button = document.getElementById("button");
 const input = document.getElementById("input");
 const ul = document.getElementById("ul");
-const list = document.getElementById("list");
-const error = document.createTextNode('fill in the field');
+const inputError = document.getElementById("error");
 let amount = 1;
-input.onfocus = function () {
+input.addEventListener("focus", function () {
+    inputError.classList.add("error");
     input.classList.remove("error-input")
-    error.remove();
-}
+})
 function addTask() {
-    input.value = input.value.trim();
-    if (input.value) {
-
+    const value = input.value.trim();
+    if (value) {
         const li = document.createElement('li');
         li.innerText = input.value;
         input.value = "";
@@ -25,21 +23,15 @@ function addTask() {
             ul.classList.add("text-red");
         }
     } else {
-        list.before(error);
-        input.classList.add("error-input")
+        input.value = "";
+        inputError.classList.remove("error");
+        input.classList.add("error-input");
     }
 }
-button.addEventListener("click", function () {
-    addTask();
-});
-input.addEventListener('keydown', function (event) {
+
+button.addEventListener("click", addTask);
+input.addEventListener('keydown',  (event)=> {
     if (event.code === 'Enter') {
         addTask();
     }
 });
-
-
-
-
-
-
