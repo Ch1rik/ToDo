@@ -1,0 +1,13 @@
+.text-red {
+    color: red;
+}
+.text-green{
+    color:green;
+}
+
+.error-input{
+    border-color: red;
+}
+.error{
+    color: red;
+}
